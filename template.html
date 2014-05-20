@@ -26,13 +26,23 @@ URL: https://code.google.com/p/io-2012-slides
 
 <slides class="layout-widescreen">
 
-  <slide class="logoslide nobackground">
+  <slide class="logoslide nobackground dark">
     <article class="flexbox vcenter">
       <span><img src="images/breizhcamp-splash.png"></span>
     </article>
   </slide>
 
   <slide class="title-slide segue nobackground">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>un peu de contexte pour commencer</li>
+          <li>pas d'inventaire, ni des commandes, ni des raccourcis</li>
+          <li>trucs et astuces utilisables au quotidien</li>
+          <li>disclaimer : j'ai appris pleins de trucs en préparant cette présentation</li>
+        </ul>
+      </section>
+    </aside>
     <aside class="gdbar"><img src="images/breizhcamp-logo.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
@@ -40,359 +50,1033 @@ URL: https://code.google.com/p/io-2012-slides
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
     </hgroup>
+    <img style="position: absolute; left: 850px; top: 535px;" src="images/obs.jpg">
   </slide>
 
   <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>charité bien ordonnée commence par soi-même ! bash après...</li>
+        </ul>
+      </section>
+    </aside>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>moi</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <p>Orange / IT&amp;Labs</p>
+      <p>développeur Java / architecte logiciel</p>
+      <p>administrateur système Unix / Linux</p>
+      <p>15 ans Linux</p>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>le fait de l'utiliser tout le temps permet de se créer des réflexes</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>pourquoi utiliser un shell sur son poste ?</h2>
+      <h3>alors qu'on a une souris !</h3>
     </hgroup>
     <article>
       <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
+        <li>efficacité (automatisation, reproductibilité, ...)</li>
+        <li>traitements jetables de données textuelles (log par exemple)</li>
+        <li>tout simplement pour s'habituer
           <ul>
-            <li>Subtitle capitalization is title case</li>
+            <li>seule solution pour interagir avec des serveurs Linux (SSH dans le cloud)</li>
           </ul>
         </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
+        <li>un peu dur de plonger dedans...
+          <ul>
+            <li>une distrib linux contient plusieurs milliers de programmes !</li>
+          <pre class="prettyprint"  data-lang="shell">
+bash$ ls -1 /bin /usr/bin | wc -l
+3280
+</pre>
+            <li>syntaxe hétérogène entre les programmes</li>
+          </ul>
+        </li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>mon terminal :)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/terminal.png" alt="mon terminal" title="mon terminal">
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>ne pas confondre BASh et le terminal</li>
+          <li>scripts d'installation</li>
+          <li>séquence de boot (remplacé par des outils plus évolués)</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>BASH</h2>
+      <h3>the Bourne-Again Shell</h3>
     </hgroup>
     <article>
-      <p>A list where items build:</p>
-      <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
+      <ul>
+        <li>le shell du projet GNU => utilisé par defaut dans les distribs Linux</li>
+        <li>un shell parmis d'autres (sh, zsh, ksh, ...)</li>
+        <li>un programme <b>comme</b> les autres (pas de privilèges particuliers)</li>
+        <li>exécute des commandes
+          <ul>
+            <li>tapées au clavier depuis un terminal</li>
+            <li>issues d'un script</li>
+          </ul>
+        </li>
+        <li>très configurable (<code>~/.bashrc</code>, <code>~/.inputrc</code>, ...)</li>
       </ul>
-      <p>Another list, but items fade as they build:</p>
-      <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
+    </article>
+  </slide>
+
+  <slide class="segue quote dark">
+    <aside class="note">
+      <section>
+        <ul>
+          <li>l'édition de la ligne en cours : un éditeur de texte mono-ligne !</li>
+          <li>la complétion</li>
+          <li>l'historique</li>
+        </ul>
+      </section>
+    </aside>
+    <article class="flexbox vcenter">
+      <h2>fonctionnalités interactives</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>pas d'inventaire, juste ce qui sert tout le temps</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>éditeur de la ligne courante</h2>
+      <h3>quelques raccourcis</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>CTRL-C</code> : tue la commande en cours</li>
+        <li><code>CTRL-Z</code> : gèle la commande en cours</li>
+        <li><code>CTRL-D</code> : quitte le shell</li>
+        <li>en mode par défaut (emacs)
+          <ul>
+            <li><code>CTRL-GAUCHE</code> / <code>CTRL-DROITE</code> : mot précédent / mot suivant</li>
+            <li><code>CTRL-A</code> / <code>CTRL-E</code> : va au début / à la fin de la ligne</li>
+            <li><code>CTRL-W</code> : supprime le mot précédent</li>
+            <li><code>CTRL-U</code> / <code>CTRL-K</code> : supprime la ligne jusqu'au début / jusqu'à la fin</li>
+          </ul>
+        </li>
+        <li>astuce : mettre en commentaires la ligne en cours permet de se la garder sous le coude pour plus tard (séquence <code>CTRL-A</code>, <code>#</code>, <code>ENTRÉE</code>)</li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
+      <h2>la complétion</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>touche <code>TAB</code> complète la ligne en cours avec soit :
+          <ul>
+            <li>nom de commande</li>
+            <li>nom de fichier ou répertoire</li>
+            <li>nom de variable</li>
+          </ul>
+        </li>
+        <li>completion intelligente avec <code>bash_completion</code> (contextuelle à la commande)
+          <ul>
+          <pre class="prettyprint" data-lang="shell">
+$ man &lt;TAB&gt;
+Display all 10203 possibilities? (y or n)
+</pre>
+            <li>implémenté par des fonctions BASH</li>
+            <li>extensions à mettre dans <code>/etc/bash_completion.d/</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>la complétion</h2>
+      <h3>configuration améliorée</h3>
     </hgroup>
     <article class="smaller">
       <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
+        <li>dans le fichier <code>~/.inputrc</code>, à initialiser comme suit si vide</li>
+          <pre class="prettyprint">
+$include /etc/inputrc
+</pre>
+        <li>ignorer la case</li>
+          <pre class="prettyprint">
+set completion-ignore-case on
+#treats hyphens ('-') and underscores ('_') as equivalent
+set completion-map-case on
+</pre>
+        <li>ignorer les fichiers cachés (ceux commençant par un <code>.</code>)</li>
+          <pre class="prettyprint">
+set match-hidden-files off
+</pre>
+        <li>afficher directement les completions possibles (évite de taper <code>TAB</code> 2 fois)</li>
+          <pre class="prettyprint">
+set show-all-if-ambiguous on
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>historique des commande</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>garde en 'mémoire' les commandes précédemment exécutées
+          <ul>
+            <li>stocké dans <code>~/.bash_history</code> à la sortie du shell</li>
+            <li>500 lignes conservé par défaut</li>
+          </ul>
+        </li>
+        <li>touche <code>HAUT</code> / <code>BAS</code> : commande précédente / suivante
+          <ul>
+            <li>peu efficace avec un gros historique</li>
+          </ul>
+        </li>
+        <li><code>CTRL-R</code> : recherche mot-clé dans l'historique</li>
+        <li><code>ALT-.</code> : répère le dernier argument de la commande précédente</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>historique des commande</h2>
+      <h3>configuration améliorée</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>recherche incrémentale avec <code>HAUT</code> / <code>BAS</code> (dans <code>~/.inputrc</code>)</li>
+          <pre class="prettyprint">
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+</pre>
+        <li>un gros historique (dans <code>~/.bashrc</code>)</li>
+          <pre class="prettyprint" data-lang="bash">
+HISTSIZE=20000
+HISTFILESIZE=20000
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>le prompt</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>ce qu'affiche le shell avant la zone d'édition</li>
+          <pre class="prettyprint" data-lang="shell">
+yoann@computer:~/breizhcamp-bashetmoi $
+</pre>
+        <li>assez basique par défaut mais fortement personnalisable</li>
+        <li>variable <code>PS1</code>, évaluée à chaque affichage
+          <ul>
+            <li>peut inclure des informations contextuelles</li>
+            <li>peut inclure des appels de fonctions</li>
+          </ul>
+        </li>
+        <li>configuration à mettre dans <code>~/.bashrc</code></li>
       </ul>
     </article>
   </slide>
 
   <slide hidden>
-    Hidden slides are left out of the presentation.
+    <hgroup>
+      <h2>le prompt</h2>
+      <h3>intégration avec git</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>informations sur la copie de travail en cours
+          <ul>
+            <li>nom de la branche</li>
+            <li>modification en cours</li>
+            <li>nombre de commit par rapport à <code>origin</code></li>
+          </ul>
+        </li>
+        <li>exemple de configuration dans le <code>~/.bashrc</code></li>
+        <pre class="prettyprint" data-lang="bash">
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM="auto verbose"
+PS1='\u@\h:\w$(__git_ps1)\$ '
+</pre>
+        <li>donne un prompt comme ça</li>
+        <pre class="prettyprint" data-lang="shell">
+yoann@computer:~/breizhcamp-bashetmoi (master * u=) $
+</pre>
+      </ul>
+    </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>un prompt clé en main : <code>liquidprompt</code></h2>
     </hgroup>
     <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
+      <ul>
+        <li>affiche élégamment des informations utiles uniquement quand le contexte le demande</li>
+        <li>https://github.com/nojhan/liquidprompt</li>
+      </ul>
+      <img src="images/liquidprompt.png" alt="mon terminal" title="mon terminal">
+    </article>
+  </slide>
+
+  <slide class="segue quote dark">
+    <article class="flexbox vcenter">
+      <h2>ok, mais qu'est qu'on tape ?</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>pas un cours magistral sur le langage bash</li>
+          <li>interactif : attend une ligne de commande</li>
+          <li>une ligne de commande contient
+            <ul>
+              <li>nom d'une commande à exécuter</li>
+              <li>liste d'arguments à passer</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>la ligne de commande</h2>
+      <h3>petits rappels...</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>on tape des commandes !</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ date
+mardi 20 mai 2014, 21:36:53 (UTC+0200)
+[yoann:~]$ date +"on est %A"
+on est mardi
+</pre>
+        <li>navigation et manipulation de répertoires (<code>cd</code>, <code>mkdir</code>, <code>rmdir</code>, ...)</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ mkdir test
+[yoann:~]$ cd test
+[yoann:~/test]$ ls
+[yoann:~/test]$
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>la ligne de commande</h2>
+      <h3>petits rappels...</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>gestion de fichiers (<code>ls</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, ..)</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ ls
+template.html
+[yoann:~]$ cp template.html template.html.old
+[yoann:~]$ ls
+template.html  template.html.old
+[yoann:~]$ rm template.html
+</pre>
+        <li>gestion de l'exécution des programmes</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ libreoffice &
+[1] 6698
+[yoann:~]$ jobs
+[1]+  En cours d'exécution   libreoffice &
+[yoann:~]$ fg
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>la ligne de commande</h2>
+      <h3>petits rappels...</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>l'évaluation est plus complexe qu'un simple lancement de programme
+        <li>applique des substitutions (variables, caractères spéciaux, ...)</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ echo ${PWD}
+/home/yoann
+[yoann:~]$ echo ls *
+echo ls template.html.old
+</pre>
+        <li>interprète les constructions du langage et exécute les programmes</li>
+        <pre class="prettyprint" data-lang="shell">
+[yoann:~]$ for i in {1..5}; do echo -n "$i "; done
+1 2 3 4 5
+</pre>
+        <li>c'est un vrai langage de programmation !</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>philosophie des outils Unix</li>
+          <ul>
+            <li>un programme => un besoin</li>
+            <li>un shell pour les lier entre eux</li>
+          </ul>
+        </li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>commandes de base pour survivre</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>exécutables systèmes : 
+          <ul>
+            <li>cp, mv, rm, mkdir, rmdir, chown, chmod</li>
+            <li>ls, find, stat</li>
+            <li>grep, wc, tr, sort, uniq, head, cut, cat, echo, tail(f), more, less, join, date</li>
+            <li>xargs</li>
+            <li>vi, sed, awk</li>
+          </ul>
+        </li>
+        <li>commandes internes :
+          <ul>
+            <li>cd, pwd</li>
+            <li>export, set, env</li>
+            <li>if, then, else, fi, for, while, do, done</li>
+            <li>|, ||, &amp;, &amp;&amp;</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>à l'aide !!!</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>utiliser le <code>man</code></li>
+        <pre class="prettyprint" data-lang="shell">
+bash$ man ls
+</pre>
+        <li>utiliser <code>-h</code> ou <code>--help</code></li>
+        <pre class="prettyprint" data-lang="shell">
+bash$ ls --help
+Utilisation : ls [OPTION]... [FILE]...
+Afficher des renseignements sur les FILEs (du répertoire actuel par défaut).
+Trier les entrées alphabétiquement si aucune des options -cftuvSUX ou --sort
+ne sont utilisées.
+
+Les arguments obligatoires pour les options longues le sont aussi pour les
+options courtes.
+  -a, --all                  ne pas ignorer les entrées débutant par .
+  -A, --almost-all           ne pas inclure . ou .. dans la liste
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue quote dark">
+    <article class="flexbox vcenter">
+      <h2>exemples de <span style="text-decoration:line-through;">programmes<span></h2>
+      <h2 style="margin-top:20px;">lignes de commande...</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>liste des commandes que j'utilise le plus</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+$ head hist-201405.txt
+   3682 cd
+   2967 ls
+   2364 git
+   1349 ssh
+   1050 gitg
+    828 cat
+    796 l
+    596 vi
+    474 sudo
+    381 rm
 </pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>redirections et substitutions</h3>
     </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+</pre>
+      <ul>
+        <li>opérateur pipe : <code><span style="font-style: italic;">command A</span> | <span style="font-style: italic;">command B</span></code>
+          <ul>
+            <li>connecte la sortie standard de <code>A</code> vers l'entrée de <code>B</code></li>
+            <li>les 2 processus s'exécutent en même temps</li>
+          </ul>
+        </li>
+        <li>opérateur <code>&gt;</code> : redirige la sortie standard dans un fichier</li>
+        <li>opérateur <code>$(<span style="font-style: italic;">command</span>)</code> : substitue l'argument par la sortie standard de l'exécution de <code>command</code></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>les commandes utilisées</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+</pre>
+      <ul>
+        <li><code>history</code> : affiche l'historique</li>
+      <pre class="prettyprint" data-lang="shell">
+$ history
+  498  vi .inputrc 
+  499  cat /etc/inputrc 
+  500  ls
+  501  history
+</pre>
+        <li><code>awk</code> : traitement de chaines (recherches, remplacements, transformations)</li>
+      <pre class="prettyprint" data-lang="shell">
+$ history | awk '{print $2}'
+vi
+cat
+ls
+history
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>les commandes utilisées</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+$ head hist-201405.txt
+</pre>
+      <ul>
+        <li><code>sort</code> : tri le texte entrée
+          <ul>
+            <li><code>-k1,1</code> : clé de tri => 1ère colonne</li>
+            <li><code>-n</code> : tri numérique</li>
+            <li><code>-r</code> : inverse le tri</li>
+          </ul>
+        </li>
+        <li><code>uniq</code> : supprime les doublons
+          <ul>
+            <li><code>-c</code> : préfixe avec le compte</li>
+          </ul>
+        </li>
+        <li><code>head</code> : affiche le début</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
+  --list | grep -q mybranch && echo "$d" ) ; done
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
+  --list | grep -q mybranch && echo "$d" ) ; done
+submodule-3/
+submodule-5/
+submodule-8/
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
+  --list | grep -q mybranch && echo "$d" ) ; done
+submodule-3/
+submodule-5/
+submodule-8/
+</pre>
+      <p>reformattons !</p>
+      <pre class="prettyprint">
+$ find * -name ".git" | \
+  while read d ; do \
+    d=${d%.git} ; \
+    ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+  done
+</pre>
+    <p>le caractère <code>\</code> permet d'échapper le retour chariot</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+-> $ find * -name ".git" | \
+     while read d ; do \
+       d=${d%.git} ; \
+       ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+     done
+</pre>
+      <ul>
+        <li>métacaractère <code>*</code> remplacé par la liste des fichiers dans le répertoire courant</li>
+        <li>commande <code>find</code> : recherche récursive de fichiers par critères</li>
+        <pre class="prettyprint">
+$ find * -name ".git"
+submodule-1/.git
+submodule-2/.git
+subdir-1/subsubmodule-2/.git
+...
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+   $ find * -name ".git" | \
+->   while read d ; do \
+       ...
+->   done
+</pre>
+      <ul>
+        <li>commande <code>while x; do <span style="font-style: italic;">command</span> ; done </code>
+          <ul>
+            <li>boucle exécutant <code>command</code> tant que la commande <code>x</code> réussi</li>
+          </ul>
+        </li>
+        <li><code>;</code> sépare une liste de commandes exécutées séquentiellement</li>
+        <li>commande <code>read <span style="font-style: italic;">var</span></code>
+          <ul>
+            <li>assigne à <code><span style="font-style: italic;">var</span></code>
+            une ligne lue depuis l'entrée standard</li>
+            <li>succès tant que l'entrée standard n'est pas vide (code retour 0)</li>
+          </ul>
+        </li>
+      </ul>
+      <p>note : construction fonctionnant avec des noms de fichiers ayant des espaces</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+   $ find * -name ".git" | \
+     while read d ; do \
+->     d=${d%.git} ; \
+       ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+     done
+</pre>
+      <ul>
+        <li>assignation <code>varname = value</code></li>
+        <li>Shell Parameter Expansion
+          <ul>
+            <li><code>${variable%word}</code> enlève <code>word</code> à la fin de <code>variable</code></li>
+            <li><code>${variable#word}</code> enlève <code>word</code> du début de <code>variable</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+   $ find * -name ".git" | \
+     while read d ; do \
+       d=${d%.git} ; \
+->     ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+     done
+</pre>
+      <p>sous shell : <code>( <span style="font-style: italic;">command</span> )</code></p>
+      <ul>
+        <li>exécute <code><span style="font-style: italic;">command</span></code> dans un nouveau process bash</li>
+        <li>permet de ne pas polluer le process principal</li>
+      </ul>
+      <pre class="prettyprint">
+$ ps | grep bash | wc -l
+1
+$ ( ps | grep bash | wc -l )
+2
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+   $ find * -name ".git" | \
+     while read d ; do \
+       d=${d%.git} ; \
+->     ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+     done
+</pre>
+      <p>liste de commandes</p>
+      <ul>
+        <li><code>command A && command B</code> : exécute <code>B</code> si <code>A</code> a réussie (ET logique)</li>
+        <li><code>command A || command B</code> : exécute <code>B</code> si <code>A</code> a échouée (OU logique)</li>
+        <li><code>command A ; command B</code> : exécute <code>A</code> puis <code>B</code></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 2 : on en veut plus</h2>
+      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+   $ find * -name ".git" | \
+     while read d ; do \
+->     d=${d%.git} ; \
+       ( cd "$d" && git branch --list | grep -q mybranch && echo "$d" ) ; \
+     done
+</pre>
+      <ul>
+        <li>command <code>grep</code> : recherche de pattern dans un fichier ou l'entrée standard
+          <ul>
+            <li><code>-q</code> : mode silencieux (quiet)</li>
+            <li>code retour 0 si pattern trouvé</li>
+          </ul>
+        </li>
+        <li>command <code>echo</code> : affiche les arguments passés</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 3 : super combo !</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>génère un changelog unifié à partir de changelog debien d'un ensemble de sous-modules</li>
+      </ul>
+      <pre class="prettyprint" data-lang="bash">
+$ git diff --submodule=log $COMMIT_START $COMMIT_END | \
+  sed -n -r 's|^Submodule ([^ ]+) ([0-9a-f]{7}\.?\.\.[0-9a-f]{7})[: ].*|\1 \2|p' | \
+  while read sm vv ; do \
+    v1=${vv%%..*} ; v2=${vv##*..} ; \
+    echo ">>> ${sm} (${v1}..${v2})" >&2 ; \
+    if [[ ${v1} = 0000000 ]] ; then \
+      cat "${sm}/debian/changelog" ; \
+    else \
+      git --git-dir="${sm}/.git" diff "${v1}..${v2}" -- debian/changelog | \
+        sed -n '/^+++/!s:^+::p' ;\
+    fi ;\
+  done
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>du one-liner au script</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>fichier texte avec droits d'exécution : <code>chmod +x myscript.sh</code></li>
+        <li>entête spécial avec le shebang : <code>#!/bin/bash</code></li>
+        <li>possibilité de définir des fonctions pour organiser son code</li>
+        <pre class="prettyprint" data-lang="bash">
+#!/bin/bash
+function usage { 
+  echo 'Salut le BreizhCamp'; exit 1
 }
+[[ $# == 0 ]] && usage
+echo "$@"
 </pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
+      </ul>
     </article>
   </slide>
 
   <slide>
-    <aside class="note">
-      <section>
+    <hgroup>
+      <h2>quelques tips</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>expansion de crochet : <code>{mot1,mot2}</code></li>
+          <pre class="prettyprint" data-lang="bash">
+$ echo mv realllylongname.cpp{,-old}
+mv realllylongname.cpp realllylongname.cpp-old
+</pre>
+        <li>revenir au répertoire précédant</li>
+          <pre class="prettyprint" data-lang="bash">
+$ cd -
+</pre>
+        <li>renommage massif de fichiers</li>
+          <pre class="prettyprint" data-lang="bash">
+$ rename 's/old/new/' *.java
+</pre>
+        <li>opérateur <code>&lt;(command)</code> : expose le flux de sortie de <code>command</code> comme un fichier</li>
+          <pre class="prettyprint" data-lang="shell">
+$ diff &lt;(sort -u file1) &lt;(sort -u file2)
+</pre>
         <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
+          <li>évite de créer des fichiers temporaires dans des cas complexes</li>
         </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Presenter Mode</h2>
-    </hgroup>
-    <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Image</h2>
+      <h2>commandes spéciales</h2>
     </hgroup>
     <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+      <ul>
+        <li><code>sed</code> (stream editor) : outil de manipulation de texte permettant d'inserer, de supprimer, de chercher et replacer du texte
+          <ul>
+            <li>substitution simple dans un fichier</li>
+            <pre class="prettyprint" data-lang="bash">
+$ sed -e 's/foo/bar/' myfile.txt
+</pre>
+            <li>liste des suffixes de recherche DNS</li>
+            <pre class="prettyprint" data-lang="bash">
+$ sed -n 's/^search //p' /etc/resolv.conf
+</pre>
+          </ul>
+        </li>
+        <li><code>jq</code> (JSON processor) : équivalent de sed pour des données JSON</li>
+        <li><code>sponge</code> : l'éponge à fichier (paquet <code>moreutils</code>)
+          <ul>
+            <li></li>
+            <pre class="prettyprint" data-lang="shell">
+bash$ sort test.csv | sponge test.csv
+</pre>
+          </ul>
+        </li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
+      <h2>les alias</h2>
+    </hgroup>
+    <article>
+      <p>raccourcis vers une commande ou pré-configuration</p>
+      <pre class="prettyprint" data-lang="bash">
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+# accès rapide au répertoire du projet foo
+alias cdf='cd ~/Projets/foo'
+</pre>
+      <p>généralement définis dans <code>~/.bash_aliases</code></p>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote">
+    <article class="flexbox vleft">
+      <h2>Autour de BASH</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>tmux</code> : un multiplexeur de terminal</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+      <img src="images/tmux-htop.png">
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2><code>tmux</code> : un multiplexeur de terminal</h2>
     </hgroup>
     <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
+      <ul>
+        <li>plusieurs terminaux virtuels dans une même fenêtre (multiplexe le terminal)</li>
+        <li>détachement / rattachement d'une session</li>
+        <li>visualisation de plusieurs processus en même temps</li>
+        <li>multiplexage du clavier possible<ul><li>permet d'exécuter une commande sur plusieurs serveurs en même temps</li></ul></li>
+        <li>alternative à GNU <code>screen</code></li>
+      </ul>
     </article>
-  </slide>
+  </slide>  
 
   <slide>
-    <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide Styles</h2>
-    </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
+    <aside class="note">
+      <section>
         <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
+          <li>si vous regardez le monde Unix par la fenêtre...</li>
+          <li>outilllage console est plutôt limité...
+            <ul>
+              <li>peut-on appeler <code>cmd.exe</code> un shell ?</li>
+              <li>le 'terminal' n'est pas très agréable : 80 colonnes non redimensionnable (enfin si, dans menu1 / menu2 / menu3, 4ème onglet), copier / coller pénible</li>
+            </ul>
+          </li>
+          <li>PowerShell</li>
         </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>vu de la fenêtre</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>Chocolatey</code>
+          <ul>
+            <li>outil d'installation automatique de paquets logiciels pour Windows</li>
+            <li>équivalent de <code>apt-get</code> ou <code>yum</code></li>
+            <li><a href="https://chocolatey.org">https://chocolatey.org</a></li>
+          </ul>
+        </li>
+        <li><code>ConsoleZ</code> : une <b>vrai</b> console (copier / coller, redimensionnement, ...)</li>
+          <pre class="prettyprint">
+c:\> cinst ConsoleZ
+</pre>
+        <li>BASH existe sous Windows !
+          <ul>
+            <li><code>MinGW</code> : Minimalistic GNU for Windows</li>
+          <pre class="prettyprint">
+c:\> cinst mingw
+</pre>
+            <li><code>Cygwin</code> : couche de compatibilité Linux pour Windows</li>
+          <pre class="prettyprint">
+c:\> cinst Cygwin
+</pre>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>liens</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><a href="http://www.gnu.org/software/bash/manual/">Bourne-Again SHell manual (GNU)</a></li>
+        <li><a href="http://www.tldp.org/LDP/abs/html/">Advanced Bash-Scripting Guide (TLDP)</a></li>
+        <li><a href="http://superuser.com">http://superuser.com</a> : stackoverflow de la ligne de commande</li>
+        <li><a href="http://explainshell.com">http://explainshell.com</a></li>
+        <li><a href="https://dotfiles.github.io">projet dotfiles de github</a></li>
+        <li><a href="https://github.com/search?q=dotfiles&ref=cmdform">repos de dotfiles sur github</a></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide dark segue nobackground">
+    <aside class="note">
+      <section>
         <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
+          <li>j'espère vous avoir donner envie de creuser</li>
+          <li>éviter les très gros scripts => python ou ruby est plus adapté</li>
         </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
-    </article>
-  </slide>
-
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/breizhcamp-logo.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
-
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Iframe</h2>
-    </hgroup>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
-  </slide>
-
-  <slide class="thank-you-slide segue nobackground">
+      </section>
+    </aside>
     <aside class="gdbar right"><img src="images/breizhcamp-logo.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <h2>Merci</h2>
+    <article class="flexbox vleft">
+      <h2>Questions ?</h3>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
     </p>
-  </slide>
-
-  <slide class="logoslide dark nobackground">
-    <article class="flexbox vcenter">
-      <span><img src="images/breizhcamp-splash.png"></span>
-    </article>
+    <img style="position: absolute; left: 850px; top: 535px;" src="images/obs.jpg">
   </slide>
 
   <slide class="backdrop"></slide>
-
 </slides>
 
 <!--[if IE]>

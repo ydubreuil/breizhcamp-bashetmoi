@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Bash et moi',
-    //subtitle: 'Subtitle Goes Here',
+    subtitle: 'introduction à la ligne de commande Bash',
     eventTitle: 'BreizhCamp 2014',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
@@ -18,8 +18,7 @@ var SLIDE_CONFIG = {
   // Author information
   presenters: [{
     name: 'Yoann Dubreuil',
-    company: 'Développeur, Orange IT&Labs',
-    gplus: 'http://plus.google.com/109669109238504787835',
+    company: 'Orange / IT&Labs',
     github: 'http://github.com/ydubreuil'
   }/*, {
     name: 'Second Name',
