@@ -36,10 +36,10 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="note">
       <section>
         <ul>
-          <li>un peu de contexte pour commencer</li>
-          <li>pas d'inventaire, ni des commandes, ni des raccourcis</li>
-          <li>trucs et astuces utilisables au quotidien</li>
-          <li>disclaimer : j'ai appris pleins de trucs en préparant cette présentation</li>
+          <li>prez assez dense, bcp de choses, slides sur github</li>
+          <li>pas un inventaire, ni des commandes, ni des raccourcis</li>
+          <li>quelques trucs et astuces + idée générale des possibilités de bash</li>
+          <li>j'ai appris des trucs en préparant</li>
         </ul>
       </section>
     </aside>
@@ -67,7 +67,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="flexbox vcenter">
       <p>Orange / IT&amp;Labs</p>
       <p>développeur Java / architecte logiciel</p>
-      <p>administrateur système Unix / Linux</p>
+      <p>admin système Linux</p>
       <p>15 ans Linux</p>
     </article>
   </slide>
@@ -76,6 +76,7 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="note">
       <section>
         <ul>
+          <li>automatiser, traitements jetables de données textuelles (log par exemple)</li>
           <li>le fait de l'utiliser tout le temps permet de se créer des réflexes</li>
         </ul>
       </section>
@@ -86,13 +87,8 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li>efficacité (automatisation, reproductibilité, ...)</li>
-        <li>traitements jetables de données textuelles (log par exemple)</li>
-        <li>tout simplement pour s'habituer
-          <ul>
-            <li>seule solution pour interagir avec des serveurs Linux (SSH dans le cloud)</li>
-          </ul>
-        </li>
+        <li>plus efficace que le clic !</li>
+        <li>seule solution pour interagir avec un serveur Linux distant (dans le cloud)</li>
         <li>un peu dur de plonger dedans...
           <ul>
             <li>une distrib linux contient plusieurs milliers de programmes !</li>
@@ -108,21 +104,10 @@ bash$ ls -1 /bin /usr/bin | wc -l
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>mon terminal :)</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/terminal.png" alt="mon terminal" title="mon terminal">
-    </article>
-  </slide>
-
-  <slide>
     <aside class="note">
       <section>
         <ul>
-          <li>ne pas confondre BASh et le terminal</li>
-          <li>scripts d'installation</li>
-          <li>séquence de boot (remplacé par des outils plus évolués)</li>
+          <li>scripts d'install, de boot</li>
         </ul>
       </section>
     </aside>
@@ -147,15 +132,6 @@ bash$ ls -1 /bin /usr/bin | wc -l
   </slide>
 
   <slide class="segue quote dark">
-    <aside class="note">
-      <section>
-        <ul>
-          <li>l'édition de la ligne en cours : un éditeur de texte mono-ligne !</li>
-          <li>la complétion</li>
-          <li>l'historique</li>
-        </ul>
-      </section>
-    </aside>
     <article class="flexbox vcenter">
       <h2>fonctionnalités interactives</h2>
     </article>
@@ -171,14 +147,12 @@ bash$ ls -1 /bin /usr/bin | wc -l
     </aside>
     <hgroup>
       <h2>éditeur de la ligne courante</h2>
-      <h3>quelques raccourcis</h3>
     </hgroup>
     <article>
       <ul>
-        <li><code>CTRL-C</code> : tue la commande en cours</li>
-        <li><code>CTRL-Z</code> : gèle la commande en cours</li>
-        <li><code>CTRL-D</code> : quitte le shell</li>
-        <li>en mode par défaut (emacs)
+        <li>éditeur de texte mono-ligne</li>
+        <li>préfixé par un prompt pour avoir des informations contextuelles</li>
+        <li>raccourcis de navigation en mode par défaut (emacs)
           <ul>
             <li><code>CTRL-GAUCHE</code> / <code>CTRL-DROITE</code> : mot précédent / mot suivant</li>
             <li><code>CTRL-A</code> / <code>CTRL-E</code> : va au début / à la fin de la ligne</li>
@@ -186,6 +160,12 @@ bash$ ls -1 /bin /usr/bin | wc -l
             <li><code>CTRL-U</code> / <code>CTRL-K</code> : supprime la ligne jusqu'au début / jusqu'à la fin</li>
           </ul>
         </li>
+        <li>contrôle d'exécution
+          <ul>
+          <li><code>CTRL-C</code> : arrête la commande en cours</li>
+          <li><code>CTRL-Z</code> : gèle la commande en cours</li>
+          <li><code>CTRL-D</code> : quitte le shell</li>
+        </ul>
         <li>astuce : mettre en commentaires la ligne en cours permet de se la garder sous le coude pour plus tard (séquence <code>CTRL-A</code>, <code>#</code>, <code>ENTRÉE</code>)</li>
       </ul>
     </article>
@@ -204,14 +184,15 @@ bash$ ls -1 /bin /usr/bin | wc -l
             <li>nom de variable</li>
           </ul>
         </li>
-        <li>completion intelligente avec <code>bash_completion</code> (contextuelle à la commande)
+        <li>completion contextuelle à la commande avec <code>bash_completion</code>
           <ul>
           <pre class="prettyprint" data-lang="shell">
-$ man &lt;TAB&gt;
-Display all 10203 possibilities? (y or n)
+$ git &lt;TAB&gt;
+add                   commit                instaweb              rm 
+am                    config                l                     s 
+...
 </pre>
-            <li>implémenté par des fonctions BASH</li>
-            <li>extensions à mettre dans <code>/etc/bash_completion.d/</code></li>
+            <li>implémenté par des fonctions BASH (<code>/etc/bash_completion.d/</code>)</li>
           </ul>
         </li>
       </ul>
@@ -223,27 +204,23 @@ Display all 10203 possibilities? (y or n)
       <h2>la complétion</h2>
       <h3>configuration améliorée</h3>
     </hgroup>
-    <article class="smaller">
-      <ul>
-        <li>dans le fichier <code>~/.inputrc</code>, à initialiser comme suit si vide</li>
+    <article>
+      <p>dans le fichier <code>~/.inputrc</code></p>
           <pre class="prettyprint">
 $include /etc/inputrc
-</pre>
-        <li>ignorer la case</li>
-          <pre class="prettyprint">
+
+# ignore la case
 set completion-ignore-case on
-#treats hyphens ('-') and underscores ('_') as equivalent
+
+# treats hyphens ('-') and underscores ('_') as equivalent
 set completion-map-case on
-</pre>
-        <li>ignorer les fichiers cachés (ceux commençant par un <code>.</code>)</li>
-          <pre class="prettyprint">
+
+# ignorer les fichiers cachés
 set match-hidden-files off
-</pre>
-        <li>afficher directement les completions possibles (évite de taper <code>TAB</code> 2 fois)</li>
-          <pre class="prettyprint">
+
+# affiche directement les completions possibles (évite de taper <code>TAB</code> 2 fois)
 set show-all-if-ambiguous on
 </pre>
-      </ul>
     </article>
   </slide>
 
@@ -255,8 +232,8 @@ set show-all-if-ambiguous on
       <ul>
         <li>garde en 'mémoire' les commandes précédemment exécutées
           <ul>
-            <li>stocké dans <code>~/.bash_history</code> à la sortie du shell</li>
-            <li>500 lignes conservé par défaut</li>
+            <li>stocké dans <code>~/.bash_history</code></li>
+            <li>500 lignes conservées par défaut</li>
           </ul>
         </li>
         <li>touche <code>HAUT</code> / <code>BAS</code> : commande précédente / suivante
@@ -313,35 +290,16 @@ yoann@computer:~/breizhcamp-bashetmoi $
     </article>
   </slide>
 
-  <slide hidden>
-    <hgroup>
-      <h2>le prompt</h2>
-      <h3>intégration avec git</h3>
-    </hgroup>
-    <article>
-      <ul>
-        <li>informations sur la copie de travail en cours
-          <ul>
-            <li>nom de la branche</li>
-            <li>modification en cours</li>
-            <li>nombre de commit par rapport à <code>origin</code></li>
-          </ul>
-        </li>
-        <li>exemple de configuration dans le <code>~/.bashrc</code></li>
-        <pre class="prettyprint" data-lang="bash">
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUPSTREAM="auto verbose"
-PS1='\u@\h:\w$(__git_ps1)\$ '
-</pre>
-        <li>donne un prompt comme ça</li>
-        <pre class="prettyprint" data-lang="shell">
-yoann@computer:~/breizhcamp-bashetmoi (master * u=) $
-</pre>
-      </ul>
-    </article>
-  </slide>
-
   <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>contexte git : branche, état par rapport au distant</li>
+          <li>code retour et temps d'exécution de la dernière commande</li>
+          <li>processus attachés</li>
+        </ul>
+      </section>
+    </aside>
     <hgroup>
       <h2>un prompt clé en main : <code>liquidprompt</code></h2>
     </hgroup>
@@ -382,12 +340,6 @@ yoann@computer:~/breizhcamp-bashetmoi (master * u=) $
     <article>
       <ul>
         <li>on tape des commandes !</li>
-        <pre class="prettyprint" data-lang="shell">
-[yoann:~]$ date
-mardi 20 mai 2014, 21:36:53 (UTC+0200)
-[yoann:~]$ date +"on est %A"
-on est mardi
-</pre>
         <li>navigation et manipulation de répertoires (<code>cd</code>, <code>mkdir</code>, <code>rmdir</code>, ...)</li>
         <pre class="prettyprint" data-lang="shell">
 [yoann:~]$ mkdir test
@@ -395,17 +347,6 @@ on est mardi
 [yoann:~/test]$ ls
 [yoann:~/test]$
 </pre>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>la ligne de commande</h2>
-      <h3>petits rappels...</h3>
-    </hgroup>
-    <article>
-      <ul>
         <li>gestion de fichiers (<code>ls</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, ..)</li>
         <pre class="prettyprint" data-lang="shell">
 [yoann:~]$ ls
@@ -414,14 +355,6 @@ template.html
 [yoann:~]$ ls
 template.html  template.html.old
 [yoann:~]$ rm template.html
-</pre>
-        <li>gestion de l'exécution des programmes</li>
-        <pre class="prettyprint" data-lang="shell">
-[yoann:~]$ libreoffice &
-[1] 6698
-[yoann:~]$ jobs
-[1]+  En cours d'exécution   libreoffice &
-[yoann:~]$ fg
 </pre>
       </ul>
     </article>
@@ -439,8 +372,8 @@ template.html  template.html.old
         <pre class="prettyprint" data-lang="shell">
 [yoann:~]$ echo ${PWD}
 /home/yoann
-[yoann:~]$ echo ls *
-echo ls template.html.old
+[yoann:~]$ echo *
+template.html.old
 </pre>
         <li>interprète les constructions du langage et exécute les programmes</li>
         <pre class="prettyprint" data-lang="shell">
@@ -456,12 +389,9 @@ echo ls template.html.old
     <aside class="note">
       <section>
         <ul>
-          <li>philosophie des outils Unix</li>
-          <ul>
-            <li>un programme => un besoin</li>
-            <li>un shell pour les lier entre eux</li>
-          </ul>
-        </li>
+          <li>philosophie des outils Unix : un programme => un besoin</li>
+          <li>un shell pour les lier entre eux</li>
+          <li>liste des commandes ici couvre 80% des besoins</li>
         </ul>
       </section>
     </aside>
@@ -475,11 +405,10 @@ echo ls template.html.old
             <li>cp, mv, rm, mkdir, rmdir, chown, chmod</li>
             <li>ls, find, stat</li>
             <li>grep, wc, tr, sort, uniq, head, cut, cat, echo, tail(f), more, less, join, date</li>
-            <li>xargs</li>
-            <li>vi, sed, awk</li>
+            <li>xargs, sed, awk</li>
           </ul>
         </li>
-        <li>commandes internes :
+        <li>internes bash :
           <ul>
             <li>cd, pwd</li>
             <li>export, set, env</li>
@@ -501,7 +430,7 @@ echo ls template.html.old
         <pre class="prettyprint" data-lang="shell">
 bash$ man ls
 </pre>
-        <li>utiliser <code>-h</code> ou <code>--help</code></li>
+        <li>lancer une commande avec <code>-h</code> ou <code>--help</code></li>
         <pre class="prettyprint" data-lang="shell">
 bash$ ls --help
 Utilisation : ls [OPTION]... [FILE]...
@@ -519,6 +448,14 @@ options courtes.
   </slide>
 
   <slide class="segue quote dark">
+    <aside class="note">
+      <section style="color:black">
+        <ul>
+          <li>pas assez de temps pour un cours magistral sur bash</li>
+          <li>décortique 3 exemples d'utilisation typique du langage</li>
+        </ul>
+      </section>
+    </aside>
     <article class="flexbox vcenter">
       <h2>exemples de <span style="text-decoration:line-through;">programmes<span></h2>
       <h2 style="margin-top:20px;">lignes de commande...</h2>
@@ -528,22 +465,13 @@ options courtes.
   <slide>
     <hgroup>
       <h2>exemple 1 : mise en bouche</h2>
-      <h3>liste des commandes que j'utilise le plus</h3>
+      <h3>les 2 commandes que j'utilise le plus</h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
-$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
-$ head hist-201405.txt
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
    3682 cd
    2967 ls
-   2364 git
-   1349 ssh
-   1050 gitg
-    828 cat
-    796 l
-    596 vi
-    474 sudo
-    381 rm
 </pre>
     </article>
   </slide>
@@ -551,11 +479,12 @@ $ head hist-201405.txt
   <slide>
     <hgroup>
       <h2>exemple 1 : mise en bouche</h2>
-      <h3>redirections et substitutions</h3>
+      <h3>pipeline de commandes</h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
-$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
+          ^                  ^      ^         ^              ^
 </pre>
       <ul>
         <li>opérateur pipe : <code><span style="font-style: italic;">command A</span> | <span style="font-style: italic;">command B</span></code>
@@ -564,8 +493,6 @@ $ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m
             <li>les 2 processus s'exécutent en même temps</li>
           </ul>
         </li>
-        <li>opérateur <code>&gt;</code> : redirige la sortie standard dans un fichier</li>
-        <li>opérateur <code>$(<span style="font-style: italic;">command</span>)</code> : substitue l'argument par la sortie standard de l'exécution de <code>command</code></li>
       </ul>
     </article>
   </slide>
@@ -577,12 +504,13 @@ $ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m
     </hgroup>
     <article>
       <pre class="prettyprint">
-$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
 </pre>
       <ul>
         <li><code>history</code> : affiche l'historique</li>
       <pre class="prettyprint" data-lang="shell">
 $ history
+  497  ls
   498  vi .inputrc 
   499  cat /etc/inputrc 
   500  ls
@@ -591,10 +519,10 @@ $ history
         <li><code>awk</code> : traitement de chaines (recherches, remplacements, transformations)</li>
       <pre class="prettyprint" data-lang="shell">
 $ history | awk '{print $2}'
+ls
 vi
 cat
-ls
-history
+...
 </pre>
       </ul>
     </article>
@@ -607,8 +535,58 @@ history
     </hgroup>
     <article>
       <pre class="prettyprint">
-$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
-$ head hist-201405.txt
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
+</pre>
+      <ul>
+        <li><code>sort</code> : tri le texte entrée</li>
+      <pre class="prettyprint" data-lang="shell">
+$ history | awk '{print $2}' | sort
+cat
+history
+ls
+ls
+vi
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>les commandes utilisées</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
+</pre>
+      <ul>
+        <li><code>uniq</code> : supprime les doublons consécutifs
+          <ul>
+            <li><code>-c</code> : préfixe avec le compte</li>
+          </ul>
+        </li>
+      <pre class="prettyprint" data-lang="shell">
+$ history | awk '{print $2}' | sort | uniq -c
+ 1 cat
+ 1 history
+ 2 ls
+ 1 vi
+</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>les commandes utilisées</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -2
+ 2 ls
+ 1 cat
 </pre>
       <ul>
         <li><code>sort</code> : tri le texte entrée
@@ -618,12 +596,35 @@ $ head hist-201405.txt
             <li><code>-r</code> : inverse le tri</li>
           </ul>
         </li>
-        <li><code>uniq</code> : supprime les doublons
-          <ul>
-            <li><code>-c</code> : préfixe avec le compte</li>
-          </ul>
-        </li>
         <li><code>head</code> : affiche le début</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section style="color:black">
+        <ul>
+          <li>stocké le résultat dans un fichier horodaté</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>exemple 1 : mise en bouche</h2>
+      <h3>redirection dans un fichier</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint">
+$ history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr > hist-$(date +%Y%m).txt
+$ head hist-201405.txt
+   3682 cd
+   2967 ls
+   2364 git
+   ...
+</pre>
+      <ul>
+        <li>opérateur <code>&gt;</code> : redirige la sortie standard dans un fichier</li>
+        <li>opérateur <code>$(<span style="font-style: italic;">command</span>)</code> : substitue l'argument par la sortie standard de l'exécution de <code>command</code></li>
       </ul>
     </article>
   </slide>
@@ -631,7 +632,7 @@ $ head hist-201405.txt
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -644,15 +645,15 @@ $ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
 $ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
   --list | grep -q mybranch && echo "$d" ) ; done
-submodule-3/
-submodule-5/
-submodule-8/
+dépot-3/
+dépot-5/
+dépot-8/
 </pre>
     </article>
   </slide>
@@ -660,15 +661,15 @@ submodule-8/
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
 $ find * -name ".git" | while read d ; do d=${d%.git} ; ( cd "$d" && git branch
   --list | grep -q mybranch && echo "$d" ) ; done
-submodule-3/
-submodule-5/
-submodule-8/
+dépot-3/
+dépot-5/
+dépot-8/
 </pre>
       <p>reformattons !</p>
       <pre class="prettyprint">
@@ -685,7 +686,7 @@ $ find * -name ".git" | \
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -700,9 +701,9 @@ $ find * -name ".git" | \
         <li>commande <code>find</code> : recherche récursive de fichiers par critères</li>
         <pre class="prettyprint">
 $ find * -name ".git"
-submodule-1/.git
-submodule-2/.git
-subdir-1/subsubmodule-2/.git
+dépot-1/.git
+dépot-2/.git
+dir-1/dépot-Z/.git
 ...
 </pre>
       </ul>
@@ -712,7 +713,7 @@ subdir-1/subsubmodule-2/.git
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -743,7 +744,7 @@ subdir-1/subsubmodule-2/.git
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -768,7 +769,7 @@ subdir-1/subsubmodule-2/.git
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -796,7 +797,7 @@ $ ( ps | grep bash | wc -l )
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -818,7 +819,7 @@ $ ( ps | grep bash | wc -l )
   <slide>
     <hgroup>
       <h2>exemple 2 : on en veut plus</h2>
-      <h3>liste des sous-modules <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
+      <h3>liste des dépôts <code>git</code> ayant une branche nommée <span style="font-style: italic;">mybranch</span></h3>
     </hgroup>
     <article>
       <pre class="prettyprint">
@@ -846,7 +847,7 @@ $ ( ps | grep bash | wc -l )
     </hgroup>
     <article>
       <ul>
-        <li>génère un changelog unifié à partir de changelog debien d'un ensemble de sous-modules</li>
+        <li>génère un changelog unifié à partir de changelog Debian d'un ensemble de sous-modules</li>
       </ul>
       <pre class="prettyprint" data-lang="bash">
 $ git diff --submodule=log $COMMIT_START $COMMIT_END | \
@@ -918,7 +919,7 @@ $ diff &lt;(sort -u file1) &lt;(sort -u file2)
 
   <slide>
     <hgroup>
-      <h2>commandes spéciales</h2>
+      <h2>quelques tips</h2>
     </hgroup>
     <article>
       <ul>
@@ -1062,13 +1063,24 @@ c:\> cinst Cygwin
       <section>
         <ul>
           <li>j'espère vous avoir donner envie de creuser</li>
-          <li>éviter les très gros scripts => python ou ruby est plus adapté</li>
+          <li>éviter les très gros scripts => préférer python, ruby, groovy</li>
         </ul>
       </section>
     </aside>
     <aside class="gdbar right"><img src="images/breizhcamp-logo.png"></aside>
     <article class="flexbox vleft">
-      <h2>Questions ?</h3>
+      <h2>questions ?</h3>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+    <img style="position: absolute; left: 850px; top: 535px;" src="images/obs.jpg">
+  </slide>
+
+  <slide class="thank-you-slide dark segue nobackground">
+    <aside class="gdbar right"><img src="images/breizhcamp-logo.png"></aside>
+    <article class="flexbox vleft">
+      <h2>Votez +1 ou bashez moi :) </h3>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
