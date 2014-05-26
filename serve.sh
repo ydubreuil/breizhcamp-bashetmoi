@@ -19,5 +19,5 @@ else
   open=xdg-open
 fi
 
-#$open http://localhost:$port/template.html && \
+#$open http://localhost:$port/index.html && \
 python -m SimpleHTTPServer $port;
